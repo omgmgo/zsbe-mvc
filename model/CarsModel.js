@@ -13,7 +13,10 @@ class CarsModel {
     }
 
     addModel(brand, model) {
-        // TODO: implement
+        let cars= this.fetchAllCars();
+        let tenModel = cars.find((model)=> model.brand ==brand );
+        tenModel.models.push(model);
+        fs.writeFileSync(__dirname + '/cars.json', JSON.stringify(cars) ); 
     }
 
     deleteModel(brand, model){
